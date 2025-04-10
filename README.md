@@ -1,4 +1,4 @@
-![image](https://github.com/JorgeFragaCal/films-searcher/assets/54991337/e5f005c9-833c-4351-9e80-f7dd5da730b5)
+![image]()
 
 ## INTRODUCCIÓN
 El objetivo de esta prueba es la creación de una aplicación web enfocada en la visualización,
