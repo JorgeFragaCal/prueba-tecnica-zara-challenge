@@ -10,6 +10,10 @@ export class Storage {
     }
   }
 
+  static create(capacity: string, price: Price): Storage {
+    return new Storage(capacity, price)
+  }
+
   private isValidCapacity(capacity: string): boolean {
     return /^\d+(?:GB|TB)$/.test(capacity)
   }

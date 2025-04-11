@@ -1,5 +1,9 @@
-export const getData = async <T>(url: string): Promise<T> => {
+export const getData = async <T>(
+  url: string,
+  options?: RequestInit,
+): Promise<T> => {
   const response = await fetch(url, {
+    ...options,
     headers: {
       'x-api-key': import.meta.env.VITE_API_KEY_AUTH,
     },
