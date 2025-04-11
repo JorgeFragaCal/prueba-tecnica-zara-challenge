@@ -1,0 +1,3 @@
+.product-detail {
+  row-gap: clamp(5rem, 10.667vw + 2rem, 10rem);
+}

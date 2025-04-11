@@ -2,22 +2,26 @@
   position: relative;
   display: grid;
   gap: 2rem;
-  grid-column: 1 / -1;
   .slider {
     position: relative;
     overflow-x: scroll;
     scrollbar-width: none;
     /* scrollbar-width: none; */
     .slider__content {
-      margin-left: calc((100% - var(--max-width)) / 2);
       display: flex;
       gap: 1px;
-      padding: 0 1px;
-      border-block: 1px solid var(--color-border);
+      padding: 2px;
+    }
+  }
+  @media (min-width: 1024px) {
+    grid-column: 1 / -1;
+    .slider .slider__content {
+      margin-left: calc((100% - var(--max-width)) / 2);
     }
   }
   .slider__scroll {
-    width: var(--max-width);
+    max-width: var(--max-width);
+    width: 100%;
     margin-inline: auto;
     height: 1px;
     background-color: #cccccc;

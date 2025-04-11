@@ -1,10 +1,12 @@
+import './ProductDetailPage.modules.css'
 import { useFetch } from '@/hooks/useFetch'
 import { getSmartphoneById } from '@/application/usecases'
 import { Product } from '@/domain/models/interfaces'
 import { LoadingBar, SmartphoneCard } from '@/ui/components'
 import { deleteDuplicate } from '@/utils/deleteDuplicate'
 import { ProductInfoHeader, Specifications } from './components'
-import { Slider } from './components/Slider'
+import { Slider } from './components/'
+
 export const ProductDetailPage = ({ id }: { id: string }) => {
   const {
     data: product,
