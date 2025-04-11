@@ -42,7 +42,8 @@
           gap: 1rem;
           border: 1px solid #ccc;
           border-right: none;
-          padding: 1rem;
+          padding: 1.5rem;
+          justify-content: center;
 
           &:last-child {
             border-right: 1px solid #ccc;
