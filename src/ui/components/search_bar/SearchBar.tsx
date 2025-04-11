@@ -1,7 +1,7 @@
 import './SearchBar.modules.css'
 export const SearchBar = ({
   placeholder = 'Search for a smartphone...',
-  results = 0,
+  results = 20,
   value = '',
   onChange = () => {},
 }: {

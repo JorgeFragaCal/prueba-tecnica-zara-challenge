@@ -15,10 +15,19 @@ export const ProductDetailPage = ({ id }: { id: string }) => {
   } = useFetch<Product | null>(() => getSmartphoneById({ id }), id)
 
   if (loading) return <LoadingBar loading={loading} />
-  if (error) return <div>Error: {error.message}</div>
+  if (error) {
+    setTimeout(() => {
+      window.location.href = '/'
+    }, 1000)
+    return (
+      <main className='container'>
+        <h1>El producto que buscas no existe</h1>
+      </main>
+    )
+  }
   if (!product) return <div>Producto no encontrado</div>
   return (
-    <main className='product-detail container'>
+    <main className='product-detail'>
       <ProductInfoHeader product={product} />
 
       <Specifications product={product} />
