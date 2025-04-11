@@ -9,6 +9,10 @@ export class Color {
     }
   }
 
+  static create(name: string, hexCode: string, imageUrl: string): Color {
+    return new Color(name, hexCode, imageUrl)
+  }
+
   private isValidHexCode(hex: string): boolean {
     return /^#[0-9A-F]{6}$/i.test(hex)
   }

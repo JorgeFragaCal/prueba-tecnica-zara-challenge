@@ -8,6 +8,10 @@ export class Price {
     }
   }
 
+  static create(amount: number, currency: string = 'EUR'): Price {
+    return new Price(amount, currency)
+  }
+
   getValue(): number {
     return this.amount
   }
