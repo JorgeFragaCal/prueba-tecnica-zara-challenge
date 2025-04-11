@@ -55,7 +55,7 @@ export const ProductInfoHeader = ({ product }: { product: Product }) => {
         </div>
 
         <Button disabled={true} onClick={() => {}}>
-          Añadir
+          Add
         </Button>
       </div>
     </section>
