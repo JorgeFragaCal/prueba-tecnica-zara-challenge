@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 export const useFetch = <TDomain>(
   getData: () => Promise<TDomain | null>,
-  dependencies: any[],
+  dependencies: any,
 ) => {
   const [data, setData] = useState<TDomain | null>(null)
   const [loading, setLoading] = useState(true)

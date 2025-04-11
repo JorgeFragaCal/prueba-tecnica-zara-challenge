@@ -3,13 +3,14 @@ import { useFetch } from '@/hooks/useFetch'
 import { getSmartphoneById } from '@/application/usecases'
 import { Product } from '@/domain/models/interfaces'
 import { LoadingBar, SmartphoneCard } from '@/ui/components'
+import { deleteDuplicate } from '@/utils/deleteDuplicate'
 
 export const ProductDetailPage = ({ id }: { id: string }) => {
   const {
     data: product,
     loading,
     error,
-  } = useFetch<Product | null>(() => getSmartphoneById({ id }), [id])
+  } = useFetch<Product | null>(() => getSmartphoneById({ id }), id)
 
   if (loading) return <LoadingBar loading={loading} />
   if (error) return <div>Error: {error.message}</div>
@@ -19,7 +20,15 @@ export const ProductDetailPage = ({ id }: { id: string }) => {
     <section className='product-detail container'>
       <div className='product-detail__main'>
         <div className='product-detail__image'>
-          <img src={product.colorOptions[0].getImageUrl()} alt={product.name} />
+          <img
+            src={product.colorOptions[0].getImageUrl()}
+            alt={product.name}
+            width={335}
+            height={415}
+            loading='eager'
+            fetchPriority='high'
+            decoding='async'
+          />
         </div>
         <div className='product-detail__info'>
           <h1>{product.name}</h1>
@@ -95,13 +104,15 @@ export const ProductDetailPage = ({ id }: { id: string }) => {
         </div>
       </div>
 
-      <section>
-        {product.similarProducts.length > 0 && (
-          <SmartphoneCard
-            product={product.similarProducts[0]}
-            url={`/product/${product.similarProducts[0].id}`}
-          />
-        )}
+      <section className='slider'>
+        {product.similarProducts.length > 0 &&
+          deleteDuplicate(product.similarProducts).map((product) => (
+            <SmartphoneCard
+              product={product}
+              url={`/product/${product.id}`}
+              key={product.id}
+            />
+          ))}
       </section>
     </section>
   )

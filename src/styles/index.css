@@ -29,7 +29,7 @@
   vertical-align: baseline;
   line-height: 100%;
   font-weight: 300;
-  letter-spacing: 0%;
+  letter-spacing: 0;
 }
 
 /*  RESET */
@@ -71,4 +71,15 @@ input {
   display: grid;
   gap: 1px;
   grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+}
+
+.slider {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+  display: flex;
+  gap: 1px;
+  padding: 0 1px;
+  border-top: 1px solid var(--color-border);
 }

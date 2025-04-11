@@ -27,9 +27,7 @@ export const ProductListPage = () => {
           offset: OFFSET_OF_PRODUCTS,
         },
       }),
-    {
-      search: debouncedSearch,
-    },
+    debouncedSearch,
   )
 
   if (error)
