@@ -3,9 +3,9 @@
   color: var(--color-white);
   border: none;
   padding: 20px;
-}
-
-.button:disabled {
-  background-color: var(--color-button-disabled);
-  color: #c2bfbc;
+  transition: background-color 0.3s ease-in-out;
+  &:disabled {
+    background-color: var(--color-button-disabled);
+    color: #c2bfbc;
+  }
 }
