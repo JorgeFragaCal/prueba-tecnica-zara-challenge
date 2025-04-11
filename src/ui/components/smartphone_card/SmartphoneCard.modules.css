@@ -2,8 +2,7 @@
   padding: 1rem;
   outline: var(--size-border) solid var(--color-border);
   opacity: 0;
-  animation: fadeIn 0.3s linear 0.3s forwards;
-
+  animation: fadeIn 0.3s linear 0.2s forwards;
   position: relative;
   .card-product__link {
     align-items: center;
@@ -16,6 +15,8 @@
       object-fit: contain;
       object-position: center;
       aspect-ratio: 1 / 1;
+      opacity: 0;
+      animation: fadeIn 0.3s linear forwards;
     }
     .card-product__info {
       --font-size: 12px;
