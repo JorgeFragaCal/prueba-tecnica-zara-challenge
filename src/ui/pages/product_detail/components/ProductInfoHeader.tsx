@@ -1,12 +1,27 @@
 import { Product } from '@/domain/models/interfaces'
 import './ProductInfoHeader.modules.css'
 import { Button } from '@/ui/components/button/Button'
+import { useProductSelection } from '../hooks/useProductSelection'
+import { useCart } from '@/context/CartContext'
+
 export const ProductInfoHeader = ({ product }: { product: Product }) => {
+  const {
+    selectedStorage,
+    selectedColor,
+    handleSelectColor,
+    handleSelectStorage,
+  } = useProductSelection(product)
+
+  const { addItemToCart } = useCart()
+
   return (
     <section className='product-info-header__container'>
       <div className='product-info-header__image'>
         <img
-          src={product.colorOptions[0].getImageUrl()}
+          src={
+            selectedColor?.getImageUrl() ??
+            product.colorOptions[0].getImageUrl()
+          }
           alt={product.name}
           width={510}
           height={630}
@@ -21,7 +36,9 @@ export const ProductInfoHeader = ({ product }: { product: Product }) => {
             {product.name}
           </h1>
           <p className='product-info-header__info-price'>
-            Form {product.basePrice.toString()}
+            Form{' '}
+            {selectedStorage?.getPrice().toString() ??
+              product.storageOptions[0].getPrice().toString()}
           </p>
         </div>
 
@@ -31,9 +48,17 @@ export const ProductInfoHeader = ({ product }: { product: Product }) => {
           </h3>
           <div className='storage-options__container'>
             {product.storageOptions.map((storage) => (
-              <div key={storage.getCapacity()} className='storage-option'>
+              <button
+                key={storage.getCapacity()}
+                className={`storage-option ${
+                  selectedStorage?.getCapacity() === storage.getCapacity()
+                    ? 'selected'
+                    : ''
+                }`}
+                onClick={() => handleSelectStorage(storage.getCapacity())}
+              >
                 <span>{storage.getCapacity()}</span>
-              </div>
+              </button>
             ))}
           </div>
         </div>
@@ -44,17 +69,25 @@ export const ProductInfoHeader = ({ product }: { product: Product }) => {
           </h3>
           <div className='color-options__container'>
             {product.colorOptions.map((color) => (
-              <div
+              <button
                 key={color.getHexCode()}
-                className='color-option'
+                className={`color-option ${
+                  selectedColor?.getHexCode() === color.getHexCode()
+                    ? 'selected'
+                    : ''
+                }`}
                 style={{ backgroundColor: color.getHexCode() }}
                 title={color.getName()}
+                onClick={() => handleSelectColor(color.getHexCode())}
               />
             ))}
           </div>
         </div>
 
-        <Button disabled={true} onClick={() => {}}>
+        <Button
+          disabled={!selectedStorage || !selectedColor}
+          onClick={() => addItemToCart(product.id)}
+        >
           Add
         </Button>
       </div>
