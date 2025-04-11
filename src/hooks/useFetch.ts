@@ -1,9 +1,7 @@
 import { useEffect, useState } from 'react'
 export const useFetch = <TDomain>(
   getData: () => Promise<TDomain | null>,
-  options?: {
-    search?: string
-  },
+  dependencies: any[],
 ) => {
   const [data, setData] = useState<TDomain | null>(null)
   const [loading, setLoading] = useState(true)
@@ -27,7 +25,7 @@ export const useFetch = <TDomain>(
     }
     fetchData()
     return () => controller.abort()
-  }, [options?.search])
+  }, [dependencies])
 
   return { data, loading, error }
 }
