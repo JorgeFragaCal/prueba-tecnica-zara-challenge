@@ -1,3 +1,5 @@
+import { Color, Price, Storage } from './value-objects'
+
 export interface Product {
   id: string
   brand: string
@@ -5,28 +7,28 @@ export interface Product {
   description: string
   basePrice: number
   rating: number
-  specs: object
-  colorOptions: colorOptions[]
-  storageOptions: storageOptions[]
+  specs: Specs
+  colorOptions: Color[]
+  storageOptions: Storage[]
   similarProducts: similarProducts[]
   imageUrl: string
-}
-
-interface colorOptions {
-  name: string
-  hexCode: string
-  imageUrl: string
-}
-
-interface storageOptions {
-  capacity: string
-  price: number
 }
 
 interface similarProducts {
   id: string
   brand: string
   name: string
-  basePrice: number
+  basePrice: Price
   imageUrl: string
+}
+
+interface Specs {
+  screen: string
+  resolution: string
+  processor: string
+  mainCamera: string
+  selfieCamera: string
+  battery: string
+  os: string
+  screenRefreshRate: string
 }
