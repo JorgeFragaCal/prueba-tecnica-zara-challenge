@@ -3,6 +3,7 @@
   outline: var(--size-border) solid var(--color-border);
   opacity: 0;
   animation: fadeIn 0.3s linear 0.2s forwards;
+  min-width: fit-content;
   position: relative;
   .card-product__link {
     align-items: center;
