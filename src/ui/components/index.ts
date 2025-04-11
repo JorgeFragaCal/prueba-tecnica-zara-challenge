@@ -1,3 +1,4 @@
+export * from './smartphone_card/SmartphoneCard'
 export * from './cart_button/CardButton'
 export * from './header/Header'
 export * from './product_card/ProductCard'
