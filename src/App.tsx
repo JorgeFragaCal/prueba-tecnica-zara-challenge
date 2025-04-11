@@ -18,19 +18,21 @@ function App() {
 
   return (
     <div>
-      {data
-        ?.filter(
-          (product, index, self) =>
-            index === self.findIndex((p) => p.id === product.id),
-        )
-        .map((product) => (
-          <div key={product.id}>
-            <h2>{product.name}</h2>
-            <p>{product.brand}</p>
-            <p>{product.basePrice.toString()}</p>
-            <p>{product.imageUrl}</p>
-          </div>
-        ))}
+      {data?.map((product) => (
+        <div key={product.id}>
+          <h2>{product.name}</h2>
+          <p>{product.brand}</p>
+          <p>{product.basePrice.toString()}</p>
+          <img
+            src={product.imageUrl}
+            alt={product.name}
+            width={500}
+            height={500}
+            loading='lazy'
+            decoding='async'
+          />
+        </div>
+      ))}
     </div>
   )
 }
