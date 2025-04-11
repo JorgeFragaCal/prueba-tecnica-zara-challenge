@@ -1,9 +1,9 @@
-import { getData } from '@/infrastructure/api/getData'
 import { useEffect, useState } from 'react'
-import { deleteDuplicate } from '@/utils/deleteDuplicate'
-export const useFetch = <TApiResponse, TDomain>(
-  url: string,
-  adapter?: (data: TApiResponse) => TDomain,
+export const useFetch = <TDomain>(
+  getData: () => Promise<TDomain | null>,
+  options?: {
+    search?: string
+  },
 ) => {
   const [data, setData] = useState<TDomain | null>(null)
   const [loading, setLoading] = useState(true)
@@ -14,28 +14,20 @@ export const useFetch = <TApiResponse, TDomain>(
     const fetchData = async () => {
       setLoading(true)
       try {
-        const data = await getData<TApiResponse>(url, controller)
+        const data = await getData()
 
-        if (Array.isArray(data)) {
-          const filteredData = deleteDuplicate(data)
-
-          const transformedData = adapter
-            ? adapter(filteredData as TApiResponse)
-            : filteredData
-
-          setData(transformedData as TDomain)
-        } else {
-          setData(null)
-        }
+        setData(data)
       } catch (error) {
         setError(error as Error)
       } finally {
-        setLoading(false)
+        setTimeout(() => {
+          setLoading(false)
+        }, 200)
       }
     }
     fetchData()
     return () => controller.abort()
-  }, [url])
+  }, [options?.search])
 
   return { data, loading, error }
 }
