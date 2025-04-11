@@ -1,5 +1,6 @@
 import { ProductBase } from '@/domain/models/interfaces'
 import './SmartphoneCard.modules.css'
+import { Link } from 'wouter'
 export const SmartphoneCard = ({
   product,
   url = `/product/${product.id}`,
@@ -9,7 +10,7 @@ export const SmartphoneCard = ({
 }) => {
   return (
     <article className='card-product' key={product.id}>
-      <a className='card-product__link' href={url}>
+      <Link className='card-product__link' href={url}>
         <img
           className='card-product__image'
           src={product.imageUrl}
@@ -26,7 +27,7 @@ export const SmartphoneCard = ({
             {product.basePrice.toString()}
           </span>
         </div>
-      </a>
+      </Link>
     </article>
   )
 }
