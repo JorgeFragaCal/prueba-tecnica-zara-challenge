@@ -1,0 +1,11 @@
+.button {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border: none;
+  padding: 20px;
+}
+
+.button:disabled {
+  background-color: var(--color-button-disabled);
+  color: #c2bfbc;
+}
