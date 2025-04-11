@@ -1,6 +1,6 @@
 import { getData } from '@/infrastructure/api/getData'
 import { useEffect, useState } from 'react'
-
+import { deleteDuplicate } from '@/utils/deleteDuplicate'
 export const useFetch = <TApiResponse, TDomain>(
   url: string,
   adapter?: (data: TApiResponse) => TDomain,
@@ -15,8 +15,18 @@ export const useFetch = <TApiResponse, TDomain>(
       setLoading(true)
       try {
         const data = await getData<TApiResponse>(url, controller)
-        const transformedData = adapter ? adapter(data) : data
-        setData(transformedData as TDomain)
+
+        if (Array.isArray(data)) {
+          const filteredData = deleteDuplicate(data)
+
+          const transformedData = adapter
+            ? adapter(filteredData as TApiResponse)
+            : filteredData
+
+          setData(transformedData as TDomain)
+        } else {
+          setData(null)
+        }
       } catch (error) {
         setError(error as Error)
       } finally {
