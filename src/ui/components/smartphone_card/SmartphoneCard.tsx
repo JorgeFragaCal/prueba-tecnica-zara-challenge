@@ -14,8 +14,8 @@ export const SmartphoneCard = ({
           className='card-product__image'
           src={product.imageUrl}
           alt={product.name}
-          width={500}
-          height={500}
+          width={330}
+          height={260}
           loading='lazy'
           decoding='async'
         />
