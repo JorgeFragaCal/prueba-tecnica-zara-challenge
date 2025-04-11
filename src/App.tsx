@@ -1,20 +1,24 @@
 import { ProductListPage, ProductDetailPage } from '@/ui/pages'
 import { Switch, Route } from 'wouter'
+import { Header } from '@/ui/components'
+import { CartProvider } from './context/CartContext'
 
 function App() {
   return (
-    <>
-      <header>Hola</header>
+    <CartProvider>
+      <Header />
       <Switch>
         <Route path='/' component={ProductListPage} />
-
         <Route path='/product/:id'>
           {(params: { id: string }) => <ProductDetailPage id={params.id} />}
         </Route>
-
-        <Route>404: No such page!</Route>
+        <Route>
+          <main>
+            <h1>404: No such page!</h1>
+          </main>
+        </Route>
       </Switch>
-    </>
+    </CartProvider>
   )
 }
 
