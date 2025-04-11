@@ -1,10 +1,9 @@
-// src/ui/pages/ProductDetailPage.tsx
 import { useFetch } from '@/hooks/useFetch'
 import { getSmartphoneById } from '@/application/usecases'
 import { Product } from '@/domain/models/interfaces'
 import { LoadingBar, SmartphoneCard } from '@/ui/components'
 import { deleteDuplicate } from '@/utils/deleteDuplicate'
-
+import { ProductInfoHeader } from './components/ProductInfoHeader'
 export const ProductDetailPage = ({ id }: { id: string }) => {
   const {
     data: product,
@@ -17,56 +16,10 @@ export const ProductDetailPage = ({ id }: { id: string }) => {
   if (!product) return <div>Producto no encontrado</div>
 
   return (
-    <section className='product-detail container'>
-      <div className='product-detail__main'>
-        <div className='product-detail__image'>
-          <img
-            src={product.colorOptions[0].getImageUrl()}
-            alt={product.name}
-            width={335}
-            height={415}
-            loading='eager'
-            fetchPriority='high'
-            decoding='async'
-          />
-        </div>
-        <div className='product-detail__info'>
-          <h1>{product.name}</h1>
-          <p className='product-detail__brand'>{product.brand}</p>
-          <p className='product-detail__price'>
-            {product.basePrice.toString()}
-          </p>
-          <p className='product-detail__description'>{product.description}</p>
+    <main className='product-detail container'>
+      <ProductInfoHeader product={product} />
 
-          <div className='product-detail__colors'>
-            <h3>Colores disponibles</h3>
-            <div className='color-options'>
-              {product.colorOptions.map((color) => (
-                <div
-                  key={color.getHexCode()}
-                  className='color-option'
-                  style={{ backgroundColor: color.getHexCode() }}
-                  title={color.getName()}
-                />
-              ))}
-            </div>
-          </div>
-
-          <div className='product-detail__storage'>
-            <h3>Almacenamiento</h3>
-            <div className='storage-options'>
-              {product.storageOptions.map((storage) => (
-                <div key={storage.getCapacity()} className='storage-option'>
-                  <span>{storage.getCapacity()}</span>
-                  <span>{storage.getPrice().toString()}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className='product-detail__specs'>
+      <section className='product-detail__specs'>
         <h2>Especificaciones técnicas</h2>
         <div className='specs-grid'>
           <div className='spec-item'>
@@ -102,7 +55,7 @@ export const ProductDetailPage = ({ id }: { id: string }) => {
             <span>{product.specs.screenRefreshRate}</span>
           </div>
         </div>
-      </div>
+      </section>
 
       <section className='slider'>
         {product.similarProducts.length > 0 &&
@@ -114,6 +67,6 @@ export const ProductDetailPage = ({ id }: { id: string }) => {
             />
           ))}
       </section>
-    </section>
+    </main>
   )
 }

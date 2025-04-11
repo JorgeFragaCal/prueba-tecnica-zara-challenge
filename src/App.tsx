@@ -3,7 +3,8 @@ import { Switch, Route } from 'wouter'
 
 function App() {
   return (
-    <main>
+    <>
+      <header>Hola</header>
       <Switch>
         <Route path='/' component={ProductListPage} />
 
@@ -13,7 +14,7 @@ function App() {
 
         <Route>404: No such page!</Route>
       </Switch>
-    </main>
+    </>
   )
 }
 

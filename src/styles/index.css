@@ -15,6 +15,7 @@
   --color-white: #fff;
   --color-border: #000;
   --size-border: 0.5px;
+  --color-button-disabled: #f3f2f2;
 }
 
 * {
@@ -49,10 +50,19 @@ body {
 }
 
 main {
+  --max-width: 1200px;
   grid-row: 2 / 3;
   display: grid;
-  grid-template-columns: 1fr minmax(0, 1720px) 1fr;
+  grid-template-columns: 1fr minmax(0, var(--max-width)) 1fr;
   gap: clamp(1rem, 1.559vw + 0.596rem, 2rem);
+
+  > * {
+    grid-column: 2 / 3;
+  }
+}
+
+.full-width {
+  --max-width: 1720px;
 }
 
 input {
@@ -60,12 +70,6 @@ input {
 }
 
 /*  UTILITIES */
-
-.container {
-  grid-column: 2 / 3;
-  display: grid;
-  gap: 48px;
-}
 
 .grid-layout {
   display: grid;

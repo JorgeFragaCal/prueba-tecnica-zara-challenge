@@ -38,7 +38,7 @@ export const ProductListPage = () => {
     )
 
   return (
-    <section id='product-list' className='container'>
+    <main id='product-list' className='full-width'>
       <LoadingBar loading={loading} />
       <SearchBar
         results={data?.length}
@@ -46,7 +46,7 @@ export const ProductListPage = () => {
         value={search}
         onChange={handleSearch}
       />
-      <div className='grid-layout'>
+      <section className='grid-layout'>
         {data?.map((product) => (
           <SmartphoneCard
             key={product.id}
@@ -54,8 +54,8 @@ export const ProductListPage = () => {
             url={`/product/${product.id}`}
           />
         ))}
-      </div>
-    </section>
+      </section>
+    </main>
   )
 }
 
