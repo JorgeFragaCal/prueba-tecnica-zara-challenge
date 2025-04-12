@@ -5,29 +5,57 @@ import {
   clearLocalStorageCart,
   getCartItems,
 } from '@/infrastructure/persistence/LocalStorageCart'
+import { ProductBase } from '@/domain/models/interfaces'
 
 interface CartContextType {
-  cartItems: string[]
-  addItemToCart: (id: string) => void
-  removeItemFromCart: (id: string) => void
+  cartItems: (Omit<ProductBase, 'brand'> & { quantity?: number })[]
+  addItemToCart: (item: Omit<ProductBase, 'brand'>) => void
+  removeItemFromCart: (item: Omit<ProductBase, 'brand'>) => void
   clearCart: () => void
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined)
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
-  const [cartItems, setCartItems] = useState<string[]>(() => {
+  const [cartItems, setCartItems] = useState<
+    (Omit<ProductBase, 'brand'> & { quantity?: number })[]
+  >(() => {
     return getCartItems()
   })
 
-  const addItemToCart = (id: string) => {
-    setCartItems((prevItems) => [...prevItems, id])
-    addItemToLocalStorageCart(id)
+  const addItemToCart = (
+    item: Omit<ProductBase, 'brand'> & { quantity?: number },
+  ) => {
+    const existingItem = cartItems.find(
+      (i) =>
+        i.id === item.id &&
+        i.basePrice === item.basePrice &&
+        i.imageUrl === item.imageUrl,
+    )
+
+    if (existingItem) {
+      const updatedItems = cartItems.map((i) =>
+        i.id === item.id &&
+        i.basePrice === item.basePrice &&
+        i.imageUrl === item.imageUrl
+          ? { ...i, quantity: (i.quantity ?? 1) + 1 }
+          : i,
+      )
+      setCartItems(updatedItems)
+      addItemToLocalStorageCart({
+        ...item,
+        quantity: (existingItem.quantity ?? 1) + 1,
+      })
+    } else {
+      const newItem = { ...item, quantity: 1 }
+      setCartItems((prevItems) => [...prevItems, newItem])
+      addItemToLocalStorageCart(newItem)
+    }
   }
 
-  const removeItemFromCart = (id: string) => {
-    setCartItems((prevItems) => prevItems.filter((item) => item !== id))
-    removeItemFromLocalStorageCart(id)
+  const removeItemFromCart = (item: Omit<ProductBase, 'brand'>) => {
+    setCartItems((prevItems) => prevItems.filter((i) => i !== item))
+    removeItemFromLocalStorageCart(item)
   }
 
   const clearCart = () => {
