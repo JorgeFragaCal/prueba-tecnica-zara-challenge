@@ -1,6 +1,7 @@
 export const Bag = ({ active }: { active: boolean }) => {
   return active ? (
     <svg
+      data-testid='bag-icon-active'
       xmlns='http://www.w3.org/2000/svg'
       width='13'
       height='16'
@@ -16,6 +17,7 @@ export const Bag = ({ active }: { active: boolean }) => {
     </svg>
   ) : (
     <svg
+      data-testid='bag-icon'
       xmlns='http://www.w3.org/2000/svg'
       width='13'
       height='17'
