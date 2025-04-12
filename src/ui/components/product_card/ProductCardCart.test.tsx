@@ -26,6 +26,7 @@ describe('ProductCardCart', () => {
     id: '1',
     name: 'Product 1',
     basePrice: Price.create(100),
+    imageUrl: 'https://example.com/image.jpg',
     brand: 'Brand 1',
     description: 'Description 1',
     rating: 4.5,

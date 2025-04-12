@@ -31,7 +31,7 @@ export const SmartphoneCard = ({
             className='card-product__info-price'
             aria-label={`Precio: ${product.basePrice.toString()} euros`}
           >
-            {product.basePrice.toString()} €
+            {product.basePrice.toString()}
           </span>
         </div>
       </Link>

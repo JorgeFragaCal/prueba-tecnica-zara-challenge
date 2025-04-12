@@ -13,19 +13,20 @@ export const SearchBar = ({
 }) => {
   return (
     <div className='search-bar' role='search'>
-      <label className='visually-hidden'>
+      <label className='visually-hidden' aria-label='Campo de búsqueda'>
         {!value && <span>{placeholder}</span>}
         <input
           id='search-input'
           type='text'
           value={value}
           autoFocus
+          role='textbox'
           onChange={(e) => onChange(e.target.value)}
           aria-label='Campo de búsqueda'
           aria-describedby='search-results'
           list='search-suggestions'
         />
-        <datalist id='search-suggestions'>
+        <datalist id='search-suggestions' role='listbox'>
           <option value='Oppo'></option>
           <option value='Samsung'></option>
           <option value='Apple'></option>

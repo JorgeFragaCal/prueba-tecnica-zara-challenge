@@ -27,8 +27,8 @@ export const ProductInfoHeader = ({ product }: { product: Product }) => {
             fill='none'
           >
             <path
-              fill-rule='evenodd'
-              clip-rule='evenodd'
+              fillRule='evenodd'
+              clipRule='evenodd'
               d='M4.82328 0.646484L5.53039 1.35359L1.88394 5.00004L5.53039 8.64648L4.82328 9.35359L0.469727 5.00004L4.82328 0.646484Z'
               fill='black'
             />
