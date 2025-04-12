@@ -39,7 +39,18 @@ export const addItemToLocalStorageCart = (
 export const removeItemFromLocalStorageCart = (
   item: Omit<ProductBase, 'brand'>,
 ): void => {
-  const items = getCartItems().filter((i) => i !== item)
+  const items = getCartItems()
+  const itemIndex = items.findIndex(
+    (i) =>
+      i.id === item.id &&
+      i.basePrice.getValue() === item.basePrice.getValue() &&
+      i.imageUrl === item.imageUrl,
+  )
+  if (itemIndex !== -1 && items[itemIndex].quantity === 1) {
+    items.splice(itemIndex, 1)
+  } else if (itemIndex !== -1) {
+    items[itemIndex].quantity = (items[itemIndex].quantity ?? 1) - 1
+  }
   localStorage.setItem(CART_KEY, JSON.stringify(items))
 }
 
