@@ -22,6 +22,7 @@ export const ProductDetailPage = ({ id }: { id: string }) => {
   }, [product])
 
   if (error) {
+    console.error(error)
     setTimeout(() => {
       window.location.href = '/'
     }, 1000)
