@@ -88,10 +88,9 @@ export const ProductInfoHeader = ({ product }: { product: Product }) => {
           disabled={!selectedStorage || !selectedColor}
           onClick={() =>
             addItemToCart({
-              id: product.id,
-              name: product.name,
-              basePrice: selectedStorage?.getPrice() ?? product.basePrice,
-              imageUrl: selectedColor?.getImageUrl() ?? product.imageUrl,
+              ...product,
+              colorOptions: [selectedColor ?? product.colorOptions[0]],
+              storageOptions: [selectedStorage ?? product.storageOptions[0]],
             })
           }
         >

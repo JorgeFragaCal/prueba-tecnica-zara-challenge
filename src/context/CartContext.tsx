@@ -5,12 +5,12 @@ import {
   clearLocalStorageCart,
   getCartItems,
 } from '@/infrastructure/persistence/LocalStorageCart'
-import { ProductBase } from '@/domain/models/interfaces'
+import { Product } from '@/domain/models/interfaces'
 
 interface CartContextType {
-  cartItems: (Omit<ProductBase, 'brand'> & { quantity?: number })[]
-  addItemToCart: (item: Omit<ProductBase, 'brand'>) => void
-  removeItemFromCart: (item: Omit<ProductBase, 'brand'>) => void
+  cartItems: (Product & { quantity?: number })[]
+  addItemToCart: (item: Product) => void
+  removeItemFromCart: (item: Product) => void
   clearCart: () => void
 }
 
@@ -18,14 +18,12 @@ const CartContext = createContext<CartContextType | undefined>(undefined)
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [cartItems, setCartItems] = useState<
-    (Omit<ProductBase, 'brand'> & { quantity?: number })[]
+    (Product & { quantity?: number })[]
   >(() => {
     return getCartItems()
   })
 
-  const addItemToCart = (
-    item: Omit<ProductBase, 'brand'> & { quantity?: number },
-  ) => {
+  const addItemToCart = (item: Product & { quantity?: number }) => {
     const existingItem = cartItems.find(
       (i) =>
         i.id === item.id &&
@@ -53,7 +51,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     }
   }
 
-  const removeItemFromCart = (item: Omit<ProductBase, 'brand'>) => {
+  const removeItemFromCart = (item: Product) => {
     const existingItem = cartItems.find(
       (i) =>
         i.id === item.id &&

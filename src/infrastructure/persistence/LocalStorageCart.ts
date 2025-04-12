@@ -1,11 +1,9 @@
-import { ProductBase } from '@/domain/models/interfaces'
+import { Product } from '@/domain/models/interfaces'
 import { Price } from '@/domain/models/value-objects'
-
+import { Color, Storage } from '@/domain/models/value-objects'
 const CART_KEY = 'cart'
 
-export const getCartItems = (): (Omit<ProductBase, 'brand'> & {
-  quantity?: number
-})[] => {
+export const getCartItems = (): (Product & { quantity?: number })[] => {
   const data = localStorage.getItem(CART_KEY)
   if (!data) return []
 
@@ -13,11 +11,17 @@ export const getCartItems = (): (Omit<ProductBase, 'brand'> & {
   return parsedItems.map((item: any) => ({
     ...item,
     basePrice: Price.create(item.basePrice.amount, item.basePrice.currency),
+    colorOptions: item.colorOptions.map((color: any) =>
+      Color.create(color.name, color.hexCode, color.imageUrl),
+    ),
+    storageOptions: item.storageOptions.map((storage: any) =>
+      Storage.create(storage.capacity, storage.price),
+    ),
   }))
 }
 
 export const addItemToLocalStorageCart = (
-  item: Omit<ProductBase, 'brand'> & { quantity?: number },
+  item: Product & { quantity?: number },
 ): void => {
   const items = getCartItems()
   const itemIndex = items.findIndex(
@@ -36,9 +40,7 @@ export const addItemToLocalStorageCart = (
   localStorage.setItem(CART_KEY, JSON.stringify(items))
 }
 
-export const removeItemFromLocalStorageCart = (
-  item: Omit<ProductBase, 'brand'>,
-): void => {
+export const removeItemFromLocalStorageCart = (item: Product): void => {
   const items = getCartItems()
   const itemIndex = items.findIndex(
     (i) =>

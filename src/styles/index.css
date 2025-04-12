@@ -85,7 +85,8 @@ button {
 /*  UTILITIES */
 
 .grid-layout {
+  --max-width: 340px;
   display: grid;
   gap: 1px;
-  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(var(--max-width), 1fr));
 }

@@ -3,8 +3,12 @@ import { Product } from '@/domain/models/interfaces'
 import { Color, Storage } from '@/domain/models/value-objects'
 
 export const useProductSelection = (product: Product) => {
-  const [selectedStorage, setSelectedStorage] = useState<Storage | undefined>()
-  const [selectedColor, setSelectedColor] = useState<Color | undefined>()
+  const [selectedStorage, setSelectedStorage] = useState<Storage | undefined>(
+    product.storageOptions[0],
+  )
+  const [selectedColor, setSelectedColor] = useState<Color | undefined>(
+    product.colorOptions[0],
+  )
 
   const handleSelectColor = (color: string) => {
     setSelectedColor(

@@ -2,7 +2,7 @@ import './ProductDetailPage.modules.css'
 import { useFetch } from '@/hooks/useFetch'
 import { getSmartphoneById } from '@/application/usecases'
 import { Product } from '@/domain/models/interfaces'
-import { LoadingBar, SmartphoneCard } from '@/ui/components'
+import { SmartphoneCard } from '@/ui/components'
 import { deleteDuplicate } from '@/utils/deleteDuplicate'
 import { ProductInfoHeader, Specifications } from './components'
 import { Slider } from './components/'
@@ -10,11 +10,10 @@ import { useState, useEffect } from 'react'
 
 export const ProductDetailPage = ({ id }: { id: string }) => {
   const [previousProduct, setPreviousProduct] = useState<Product | null>(null)
-  const {
-    data: product,
-    loading,
-    error,
-  } = useFetch<Product | null>(() => getSmartphoneById({ id }), id)
+  const { data: product, error } = useFetch<Product | null>(
+    () => getSmartphoneById({ id }),
+    id,
+  )
 
   // Actualizar el producto anterior cuando se carga uno nuevo
   useEffect(() => {
