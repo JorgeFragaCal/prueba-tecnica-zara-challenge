@@ -22,8 +22,7 @@
     .search-bar__close {
       position: absolute;
       bottom: 50%;
-      transform: translateY(50%);
-      right: 0;
+      right: 2rem;
       z-index: 1;
     }
   }

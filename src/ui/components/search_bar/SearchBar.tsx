@@ -19,10 +19,18 @@ export const SearchBar = ({
           id='search-input'
           type='text'
           value={value}
+          autoFocus
           onChange={(e) => onChange(e.target.value)}
           aria-label='Campo de búsqueda'
           aria-describedby='search-results'
+          list='search-suggestions'
         />
+        <datalist id='search-suggestions'>
+          <option value='Oppo'></option>
+          <option value='Samsung'></option>
+          <option value='Apple'></option>
+          <option value='Huawei'></option>
+        </datalist>
         {value && (
           <button
             onClick={() => onChange('')}
