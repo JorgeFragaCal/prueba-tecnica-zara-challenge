@@ -1,7 +1,7 @@
 import './Header.modules.css'
 import { Logo } from '@/ui/icons'
 import { Link } from 'wouter'
-import { CardButton } from '../cart_button/CardButton'
+import { CartButton } from '../cart_button/CartButton'
 export const Header = () => {
   return (
     <header>
@@ -9,7 +9,7 @@ export const Header = () => {
         <Link href='/'>
           <Logo />
         </Link>
-        <CardButton />
+        <CartButton />
       </div>
     </header>
   )
