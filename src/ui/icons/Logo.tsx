@@ -6,6 +6,7 @@ export const Logo = () => {
       height='30'
       viewBox='0 0 77 30'
       fill='none'
+      aria-label='Logo'
     >
       <path
         fillRule='evenodd'
