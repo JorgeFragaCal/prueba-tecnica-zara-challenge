@@ -1,10 +1,13 @@
 import { Bag } from '@/ui/icons'
-import './CardButton.modules.css'
+import './CartButton.modules.css'
 import { useCart } from '@/context/CartContext'
 
-export const CardButton = () => {
+export const CartButton = () => {
   const { cartItems } = useCart()
-  const numberOfItems = cartItems.length
+  const numberOfItems = cartItems.reduce(
+    (acc, item) => acc + (item.quantity ?? 0),
+    0,
+  )
   return (
     <button className='cart-button__container'>
       <Bag active={numberOfItems > 0} />
