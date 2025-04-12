@@ -1,6 +1,6 @@
 export * from './smartphone_card/SmartphoneCard'
 export * from './cart_button/CartButton'
 export * from './header/Header'
-export * from './product_card/ProductCard'
+export * from './product_card/ProductCardCart'
 export * from './search_bar/SearchBar'
 export * from './loading_bar/LoadingBar'
