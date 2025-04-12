@@ -4,8 +4,7 @@ import { getSmartphoneById } from '@/application/usecases'
 import { Product } from '@/domain/models/interfaces'
 import { SmartphoneCard } from '@/ui/components'
 import { deleteDuplicate } from '@/utils/deleteDuplicate'
-import { ProductInfoHeader, Specifications } from './components'
-import { Slider } from './components/'
+import { ProductInfoHeader, Specifications, Slider } from './components'
 import { useState, useEffect } from 'react'
 
 export const ProductDetailPage = ({ id }: { id: string }) => {

@@ -5,16 +5,26 @@
   justify-content: center;
   img {
     width: 100%;
-    object-fit: scale-down;
+    height: 100%;
+    max-height: 410px;
+    object-fit: contain;
   }
   .product-card-cart__info {
     display: grid;
     height: 100%;
     padding: 2rem 0;
     align-content: space-between;
+    font-size: 12px;
+    .product-card-cart__info__name-price {
+      display: grid;
+      gap: 20px;
+      .product-card-cart__info__name {
+        display: grid;
+        gap: 0.25rem;
+      }
+    }
     button {
       width: fit-content;
-      font-size: 12px;
       color: #df0000;
     }
   }

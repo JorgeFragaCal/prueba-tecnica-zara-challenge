@@ -16,11 +16,13 @@ export const ProductCardCart = ({
         height={180}
       />
       <div className='product-card-cart__info'>
-        <div>
-          <div>
+        <div className='product-card-cart__info__name-price'>
+          <div className='product-card-cart__info__name'>
             <h2>{product.name}</h2>
-            <p>{product.colorOptions[0].getName()}</p>
-            <p>{product.storageOptions[0].getCapacity()}</p>
+            <p>
+              {product.storageOptions[0].getCapacity()} |{' '}
+              {product.colorOptions[0].getName()}
+            </p>
           </div>
           <p>{product.basePrice.toString()}</p>
         </div>
