@@ -12,7 +12,6 @@ describe('CartButton', () => {
       id: '1',
       name: 'Product 1',
       basePrice: Price.create(100),
-      imageUrl: 'https://example.com/image.jpg',
       brand: 'Test Brand',
       description: 'Test Description',
       rating: 4.5,

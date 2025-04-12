@@ -47,7 +47,7 @@ export interface ProductBase {
   imageUrl: string
 }
 
-export interface Product extends ProductBase {
+export interface Product extends Omit<ProductBase, 'imageUrl'> {
   description: string
   rating: number
   specs: ApiSpecs
