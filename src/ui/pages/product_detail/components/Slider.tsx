@@ -6,10 +6,11 @@ export const Slider = ({ children }: { children: React.ReactNode }) => {
     useScroll()
 
   return (
-    <div className='slider__container'>
-      <section className='slider' ref={containerRef}>
+    <section className='slider__container' aria-label='SIMILAR ITEMS'>
+      <h2 className='slider__title'>SIMILAR ITEMS</h2>
+      <div className='slider' ref={containerRef}>
         <div className='slider__content'>{children}</div>
-      </section>
+      </div>
       <div className='slider__scroll'>
         <div
           style={{
@@ -19,6 +20,6 @@ export const Slider = ({ children }: { children: React.ReactNode }) => {
           className='slider__scroll-bar'
         ></div>
       </div>
-    </div>
+    </section>
   )
 }

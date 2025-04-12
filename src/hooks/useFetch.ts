@@ -12,9 +12,8 @@ export const useFetch = <TDomain>(
     const fetchData = async () => {
       setLoading(true)
       try {
-        const data = await getData()
-
-        setData(data)
+        const newData = await getData()
+        setData(newData)
       } catch (error) {
         setError(error as Error)
       } finally {

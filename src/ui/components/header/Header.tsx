@@ -4,12 +4,14 @@ import { Link } from 'wouter'
 import { CartButton } from '../cart_button/CartButton'
 export const Header = () => {
   return (
-    <header>
+    <header role='banner'>
       <div className='header__container'>
-        <Link href='/'>
-          <Logo />
+        <Link href='/' aria-label='Ir a la página principal'>
+          <Logo aria-hidden='true' />
         </Link>
-        <CartButton />
+        <nav role='navigation' aria-label='Carrito de compras'>
+          <CartButton />
+        </nav>
       </div>
     </header>
   )

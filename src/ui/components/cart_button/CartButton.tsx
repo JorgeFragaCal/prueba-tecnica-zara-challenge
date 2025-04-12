@@ -1,7 +1,7 @@
 import { Bag } from '@/ui/icons'
 import './CartButton.modules.css'
 import { useCart } from '@/context/CartContext'
-
+import { Link } from 'wouter'
 export const CartButton = () => {
   const { cartItems } = useCart()
   const numberOfItems = cartItems.reduce(
@@ -9,9 +9,13 @@ export const CartButton = () => {
     0,
   )
   return (
-    <button className='cart-button__container'>
+    <Link
+      to='/cart'
+      className='cart-button__container'
+      aria-label='Ir al carrito de compras'
+    >
       <Bag active={numberOfItems > 0} />
       <span>{numberOfItems}</span>
-    </button>
+    </Link>
   )
 }

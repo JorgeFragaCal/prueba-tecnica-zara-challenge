@@ -1,7 +1,7 @@
 import { useRef, useEffect, useState } from 'react'
 
 export const useScroll = () => {
-  const containerRef = useRef<HTMLElement>(null)
+  const containerRef = useRef<HTMLDivElement>(null)
   const [scrollPercentage, setScrollPercentage] = useState(0)
 
   useEffect(() => {
