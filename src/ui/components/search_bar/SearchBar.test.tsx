@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react'
+import { render, screen, fireEvent } from '@testing-library/react'
 import { SearchBar } from './SearchBar'
 import { describe, it, expect } from 'vitest'
 
@@ -21,5 +21,22 @@ describe('SearchBar', () => {
   it('should render correct number of results', () => {
     render(<SearchBar results={100} />)
     expect(screen.getByText('100 Results')).toBeInTheDocument()
+  })
+  it('should have value', () => {
+    render(<SearchBar value='test' />)
+    expect(screen.getByRole('textbox')).toHaveValue('test')
+  })
+
+  it('should show clear button if value is present', () => {
+    render(<SearchBar value='test' />)
+    expect(screen.getByRole('button')).toBeInTheDocument()
+  })
+
+  it('button should clear input', () => {
+    const { rerender } = render(<SearchBar value='test' />)
+    const button = screen.getByRole('button')
+    fireEvent.click(button)
+    rerender(<SearchBar value='' />)
+    expect(screen.getByRole('textbox')).toHaveValue('')
   })
 })
