@@ -54,7 +54,28 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   }
 
   const removeItemFromCart = (item: Omit<ProductBase, 'brand'>) => {
-    setCartItems((prevItems) => prevItems.filter((i) => i !== item))
+    const existingItem = cartItems.find(
+      (i) =>
+        i.id === item.id &&
+        i.basePrice === item.basePrice &&
+        i.imageUrl === item.imageUrl,
+    )
+    if (existingItem) {
+      const updatedItems = cartItems.map((i) =>
+        i.id === item.id &&
+        i.basePrice === item.basePrice &&
+        i.imageUrl === item.imageUrl
+          ? { ...i, quantity: (i.quantity ?? 1) - 1 }
+          : i,
+      )
+      if (updatedItems.some((i) => i.quantity === 0)) {
+        setCartItems(updatedItems.filter((i) => i.quantity !== 0))
+      } else {
+        setCartItems(updatedItems)
+      }
+    } else {
+      setCartItems((prevItems) => prevItems.filter((i) => i !== item))
+    }
     removeItemFromLocalStorageCart(item)
   }
 
