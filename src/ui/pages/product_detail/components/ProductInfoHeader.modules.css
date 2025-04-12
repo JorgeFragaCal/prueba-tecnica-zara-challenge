@@ -1,10 +1,27 @@
+.product-info-header__back-link {
+  grid-column: 1 / -1;
+  padding-inline: clamp(1rem, 1.559vw + 0.596rem, 2rem);
+  position: absolute;
+  top: 0;
+  a {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    margin: -1rem;
+    z-index: 1;
+  }
+}
+
 .product-info-header__container {
   display: grid;
   grid-template-columns: 1fr auto;
+  gap: 2rem;
+
   @media (max-width: 450px) {
     grid-template-columns: 1fr;
   }
-  gap: 2rem;
+
   .product-info-header__image {
     img {
       object-fit: scale-down;
