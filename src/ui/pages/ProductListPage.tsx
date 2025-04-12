@@ -25,12 +25,14 @@ export const ProductListPage = () => {
     debouncedSearch,
   )
 
-  if (error)
+  if (error) {
+    console.error(error)
     return (
-      <div className='container' role='alert' aria-live='assertive'>
-        <h1>Error: {error?.message}</h1>
-      </div>
+      <main className='full-width' aria-live='assertive'>
+        <h1>Error: No se pudo obtener la lista de productos</h1>
+      </main>
     )
+  }
 
   return (
     <main id='product-list' className='full-width' role='main'>
