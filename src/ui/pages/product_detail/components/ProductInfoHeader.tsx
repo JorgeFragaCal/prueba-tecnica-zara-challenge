@@ -1,7 +1,7 @@
 import { Product } from '@/domain/models/interfaces'
 import './ProductInfoHeader.modules.css'
 import { Button } from '@/ui/components/button/Button'
-import { useProductSelection } from '../hooks/useProductSelection'
+import { useProductSelection } from './hooks/useProductSelection'
 import { useCart } from '@/context/CartContext'
 import { Link } from 'wouter'
 

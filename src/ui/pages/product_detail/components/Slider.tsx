@@ -1,5 +1,5 @@
 import './Slider.modules.css'
-import { useScroll } from '../hooks/useScroll'
+import { useScroll } from './hooks/useScroll'
 
 export const Slider = ({ children }: { children: React.ReactNode }) => {
   const { containerRef, scrollPercentage, scrollWidth, clientWidth } =
