@@ -1,11 +1,6 @@
 import { useFetch } from '@/hooks/useFetch'
 import { ProductBase } from '@/domain/models/interfaces'
-import {
-  SearchBar,
-  SmartphoneCard,
-  SmartphoneCardSkeleton,
-  LoadingBar,
-} from '@/ui/components'
+import { SearchBar, SmartphoneCard, LoadingBar } from '@/ui/components'
 import { useState } from 'react'
 import { getSmartPhones } from '@/application/usecases/getSmartPhones'
 import { useDebounce } from '@/hooks/useDebounce'
@@ -32,13 +27,13 @@ export const ProductListPage = () => {
 
   if (error)
     return (
-      <div className='container'>
+      <div className='container' role='alert' aria-live='assertive'>
         <h1>Error: {error?.message}</h1>
       </div>
     )
 
   return (
-    <main id='product-list' className='full-width'>
+    <main id='product-list' className='full-width' role='main'>
       <LoadingBar loading={loading} />
       <SearchBar
         results={data?.length}
@@ -46,7 +41,7 @@ export const ProductListPage = () => {
         value={search}
         onChange={handleSearch}
       />
-      <section className='grid-layout'>
+      <section className='grid-layout' aria-label='Lista de productos'>
         {data?.map((product) => (
           <SmartphoneCard
             key={product.id}
@@ -55,10 +50,11 @@ export const ProductListPage = () => {
           />
         ))}
       </section>
+      {data?.length === 0 && (
+        <p role='status' aria-live='polite'>
+          No se encontraron productos que coincidan con tu búsqueda
+        </p>
+      )}
     </main>
   )
-}
-
-export const ProductListPageSkeleton = () => {
-  return <SmartphoneCardSkeleton />
 }

@@ -6,42 +6,62 @@ import { LoadingBar, SmartphoneCard } from '@/ui/components'
 import { deleteDuplicate } from '@/utils/deleteDuplicate'
 import { ProductInfoHeader, Specifications } from './components'
 import { Slider } from './components/'
+import { useState, useEffect } from 'react'
 
 export const ProductDetailPage = ({ id }: { id: string }) => {
+  const [previousProduct, setPreviousProduct] = useState<Product | null>(null)
   const {
     data: product,
     loading,
     error,
   } = useFetch<Product | null>(() => getSmartphoneById({ id }), id)
 
-  if (loading) return <LoadingBar loading={loading} />
+  // Actualizar el producto anterior cuando se carga uno nuevo
+  useEffect(() => {
+    if (product) {
+      setPreviousProduct(product)
+    }
+  }, [product])
+
   if (error) {
     setTimeout(() => {
       window.location.href = '/'
     }, 1000)
     return (
-      <main className='container'>
+      <main className='container' aria-live='assertive'>
         <h1>El producto que buscas no existe</h1>
+        <p>Serás redirigido a la página principal en breve.</p>
       </main>
     )
   }
-  if (!product) return <div>Producto no encontrado</div>
+
+  const currentProduct = product || previousProduct
+
   return (
-    <main className='product-detail'>
-      <ProductInfoHeader product={product} />
-
-      <Specifications product={product} />
-
-      <Slider>
-        {product.similarProducts.length > 0 &&
-          deleteDuplicate(product.similarProducts).map((product) => (
-            <SmartphoneCard
-              product={product}
-              url={`/product/${product.id}`}
-              key={product.id}
-            />
-          ))}
-      </Slider>
+    <main
+      className='product-detail'
+      role='main'
+      style={{ position: 'relative' }}
+    >
+      {currentProduct && (
+        <>
+          <ProductInfoHeader product={currentProduct} />
+          <Specifications product={currentProduct} />
+          {currentProduct.similarProducts.length > 0 && (
+            <Slider>
+              {deleteDuplicate(currentProduct.similarProducts).map(
+                (product) => (
+                  <SmartphoneCard
+                    product={product}
+                    url={`/product/${product.id}`}
+                    key={product.id}
+                  />
+                ),
+              )}
+            </Slider>
+          )}
+        </>
+      )}
     </main>
   )
 }
