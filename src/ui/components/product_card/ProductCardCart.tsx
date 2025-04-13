@@ -1,4 +1,4 @@
-import './ProductCardCart.modules.css'
+import styles from './ProductCardCart.module.css'
 import { useCart } from '@/context/CartContext'
 import { Product } from '@/domain/models/interfaces'
 export const ProductCardCart = ({
@@ -8,16 +8,16 @@ export const ProductCardCart = ({
 }) => {
   const { removeItemFromCart } = useCart()
   return (
-    <div className='product-card-cart' key={product.id}>
+    <div className={styles.productCardCart} key={product.id}>
       <img
         src={product.colorOptions[0].getImageUrl()}
         alt={product.name}
         width={100}
         height={180}
       />
-      <div className='product-card-cart__info'>
-        <div className='product-card-cart__info__name-price'>
-          <div className='product-card-cart__info__name'>
+      <div className={styles.productCardCart__info}>
+        <div className={styles.productCardCart__info__namePrice}>
+          <div className={styles.productCardCart__info__name}>
             <h2>{product.name}</h2>
             <p>
               {product.storageOptions[0].getCapacity()} |{' '}

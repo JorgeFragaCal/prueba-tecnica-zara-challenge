@@ -1,19 +1,22 @@
 import { Link } from 'wouter'
 import { Product } from '@/domain/models/interfaces'
-import './Footer.modules.css'
+import styles from './Footer.module.css'
 export const Footer = ({
   cartItems,
 }: {
   cartItems: (Product & { quantity?: number })[]
 }) => {
   return (
-    <footer className='footer-cart'>
-      <Link className='footer-cart__link footer-cart__link--secondary' to='/'>
+    <footer className={styles.footerCart}>
+      <Link
+        className={`${styles.footerCart__link} ${styles.footerCart__link_secondary}`}
+        to='/'
+      >
         Continue Shopping
       </Link>
       {cartItems.length > 0 && (
         <>
-          <div className='footer-cart__total'>
+          <div className={styles.footerCart__total}>
             <span>Total: </span>
             <span>
               {cartItems.reduce(
@@ -24,7 +27,10 @@ export const Footer = ({
               EUR
             </span>
           </div>
-          <Link className='footer-cart__link footer-cart__link--primary' to='#'>
+          <Link
+            className={styles.footerCart__link}
+            to='#'
+          >
             Pay
           </Link>
         </>

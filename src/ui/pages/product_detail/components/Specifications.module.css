@@ -1,13 +1,13 @@
-.product-detail__specs {
+.productDetail__specs {
   display: grid;
   gap: 2rem;
-  .product-detail__specs-title {
+  .productDetail__specs__title {
     font-size: 20px;
     text-transform: uppercase;
   }
-  .specs-grid {
+  .specsGrid {
     display: grid;
-    .spec-item {
+    .specItem {
       display: grid;
       gap: 1rem;
       font-size: 12px;
