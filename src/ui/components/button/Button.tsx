@@ -13,6 +13,7 @@ export const Button = ({
 }) => {
   return (
     <button
+      role='button'
       className={styles.button}
       disabled={disabled}
       onClick={onClick}
