@@ -1,4 +1,4 @@
-.product-card-cart {
+.productCardCart {
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
@@ -9,16 +9,16 @@
     max-height: 410px;
     object-fit: contain;
   }
-  .product-card-cart__info {
+  .productCardCart__info {
     display: grid;
     height: 100%;
     padding: 2rem 0;
     align-content: space-between;
     font-size: 12px;
-    .product-card-cart__info__name-price {
+    .productCardCart__info__namePrice {
       display: grid;
       gap: 20px;
-      .product-card-cart__info__name {
+      .productCardCart__info__name {
         display: grid;
         gap: 0.25rem;
       }

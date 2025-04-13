@@ -1,5 +1,5 @@
 import { ProductBase } from '@/domain/models/interfaces'
-import './SmartphoneCard.modules.css'
+import styles from './SmartphoneCard.module.css'
 import { Link } from 'wouter'
 export const SmartphoneCard = ({
   product,
@@ -9,14 +9,14 @@ export const SmartphoneCard = ({
   url: string
 }) => {
   return (
-    <article className='card-product' key={product.id} role='article'>
+    <article className={styles.cardProduct} key={product.id} role='article'>
       <Link
-        className='card-product__link'
+        className={styles.cardProduct__link}
         href={url}
         aria-label={`Ver detalles de ${product.name}`}
       >
         <img
-          className='card-product__image'
+          className={styles.cardProduct__image}
           src={product.imageUrl}
           alt={`${product.brand} ${product.name}`}
           width={330}
@@ -24,11 +24,13 @@ export const SmartphoneCard = ({
           loading='lazy'
           decoding='async'
         />
-        <div className='card-product__info'>
-          <span className='card-product__info-brand'>{product.brand}</span>
-          <h2 className='card-product__info-name'>{product.name}</h2>
+        <div className={styles.cardProduct__info}>
+          <span className={styles.cardProduct__info__brand}>
+            {product.brand}
+          </span>
+          <h2 className={styles.cardProduct__info__name}>{product.name}</h2>
           <span
-            className='card-product__info-price'
+            className={styles.cardProduct__info__price}
             aria-label={`Precio: ${product.basePrice.toString()} euros`}
           >
             {product.basePrice.toString()}

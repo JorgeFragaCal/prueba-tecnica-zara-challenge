@@ -1,4 +1,4 @@
-import './SearchBar.modules.css'
+import styles from './SearchBar.module.css'
 import { Close } from '@/ui/icons'
 export const SearchBar = ({
   placeholder = 'Search for a smartphone...',
@@ -12,7 +12,7 @@ export const SearchBar = ({
   onChange?: (value: string) => void
 }) => {
   return (
-    <div className='search-bar' role='search'>
+    <div className={styles.searchBar} role='search'>
       <label className='visually-hidden' aria-label='Campo de búsqueda'>
         {!value && <span>{placeholder}</span>}
         <input
@@ -36,13 +36,13 @@ export const SearchBar = ({
           <button
             onClick={() => onChange('')}
             aria-label='Limpiar búsqueda'
-            className='search-bar__close-button'
+            className={styles.searchBar__closeButton}
           >
-            <Close className='search-bar__close' />
+            <Close className={styles.searchBar__close} />
           </button>
         )}
       </label>
-      <span id='search-results' aria-live='polite'>
+      <span className={styles.searchBar__results} aria-live='polite'>
         {results} Results
       </span>
     </div>

@@ -1,4 +1,4 @@
-import './Button.modules.css'
+import styles from './Button.module.css'
 
 export const Button = ({
   children,
@@ -13,7 +13,7 @@ export const Button = ({
 }) => {
   return (
     <button
-      className='button'
+      className={styles.button}
       disabled={disabled}
       onClick={onClick}
       aria-label={ariaLabel}

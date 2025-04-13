@@ -1,4 +1,4 @@
-import './LoadingBar.modules.css'
+import styles from './LoadingBar.module.css'
 export const LoadingBar = ({ loading }: { loading: boolean }) => {
-  return <div id='loader' className={loading ? 'loading' : ''} />
+  return <div className={`${styles.loader} ${loading ? styles.loading : ''}`} />
 }

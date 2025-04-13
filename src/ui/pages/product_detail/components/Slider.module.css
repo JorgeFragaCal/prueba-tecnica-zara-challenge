@@ -34,7 +34,7 @@
     left: 0;
     z-index: 1;
 
-    .slider__scroll-bar {
+    .slider__scrollBar {
       height: 1px;
       background-color: var(--color-primary);
     }

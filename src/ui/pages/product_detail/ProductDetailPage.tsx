@@ -1,4 +1,4 @@
-import './ProductDetailPage.modules.css'
+import styles from './ProductDetailPage.module.css'
 import { useFetch } from '@/hooks/useFetch'
 import { getSmartphoneById } from '@/application/usecases'
 import { Product } from '@/domain/models/interfaces'
@@ -38,7 +38,7 @@ export const ProductDetailPage = ({ id }: { id: string }) => {
 
   return (
     <main
-      className='product-detail'
+      className={styles.productDetail}
       role='main'
       style={{ position: 'relative' }}
     >

@@ -1,17 +1,19 @@
-.card-product {
+.cardProduct {
   padding: 1rem;
   outline: var(--size-border) solid var(--color-border);
   opacity: 0;
   animation: fadeIn 0.3s linear 0.2s forwards;
   min-width: fit-content;
   position: relative;
-  .card-product__link {
+
+  .cardProduct__link {
     align-items: center;
     display: grid;
     grid-template-rows: auto 1fr;
     gap: 1.5rem;
     height: 100%;
-    .card-product__image {
+
+    .cardProduct__image {
       width: 100%;
       object-fit: contain;
       object-position: center;
@@ -19,7 +21,8 @@
       opacity: 0;
       animation: fadeIn 0.3s linear forwards;
     }
-    .card-product__info {
+    
+    .cardProduct__info {
       --font-size: 12px;
       --font-weight: 300;
 
@@ -31,20 +34,20 @@
       font-size: var(--font-size);
       font-weight: var(--font-weight);
 
-      .card-product__info-name,
-      .card-product__info-brand,
-      .card-product__info-price {
+      .cardProduct__info__name,
+      .cardProduct__info__brand,
+      .cardProduct__info__price {
         text-transform: uppercase;
         transition: color 0.2s ease-out 0.2s;
       }
 
-      .card-product__info-brand {
+      .cardProduct__info__brand {
         --font-size: 10px;
         grid-column: 1 / -1;
         font-size: var(--font-size);
         color: var(--color-secondary);
       }
-      .card-product__info-price {
+      .cardProduct__info__price {
         text-align: right;
       }
     }
@@ -64,10 +67,10 @@
     &::before {
       height: 100%;
     }
-    .card-product__info {
-      .card-product__info-name,
-      .card-product__info-price,
-      .card-product__info-brand {
+    .cardProduct__info {
+      .cardProduct__info__name,
+      .cardProduct__info__price,
+      .cardProduct__info__brand {
         color: var(--color-white);
         transition: color 0.1s ease-out;
       }

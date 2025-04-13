@@ -1,5 +1,5 @@
 import { Product } from '@/domain/models/interfaces'
-import './ProductInfoHeader.modules.css'
+import styles from './ProductInfoHeader.module.css'
 import { Button } from '@/ui/components/button/Button'
 import { useProductSelection } from './hooks/useProductSelection'
 import { useCart } from '@/context/CartContext'
@@ -17,7 +17,7 @@ export const ProductInfoHeader = ({ product }: { product: Product }) => {
 
   return (
     <>
-      <div className='product-info-header__back-link'>
+      <div className={styles.productInfoHeader__backLink}>
         <Link to='/'>
           <svg
             xmlns='http://www.w3.org/2000/svg'
@@ -36,8 +36,8 @@ export const ProductInfoHeader = ({ product }: { product: Product }) => {
           Back
         </Link>
       </div>
-      <section className='product-info-header__container'>
-        <div className='product-info-header__image'>
+      <section className={styles.productInfoHeader__container}>
+        <div className={styles.productInfoHeader__image}>
           <img
             src={
               selectedColor?.getImageUrl() ??
@@ -51,29 +51,29 @@ export const ProductInfoHeader = ({ product }: { product: Product }) => {
             decoding='async'
           />
         </div>
-        <div className='product-info-header__info'>
-          <div className='product-info-header__info-name'>
-            <h1 className='product-info-header__info-name-title'>
+        <div className={styles.productInfoHeader__info}>
+          <div className={styles.productInfoHeader__info__name}>
+            <h1 className={styles.productInfoHeader__info__name__title}>
               {product.name}
             </h1>
-            <p className='product-info-header__info-price'>
+            <p className={styles.productInfoHeader__info__price}>
               Form{' '}
               {selectedStorage?.getPrice().toString() ??
                 product.storageOptions[0].getPrice().toString()}
             </p>
           </div>
 
-          <div className='product-info-header__storage'>
-            <h3 className='product-info-header__storage-title'>
+          <div className={styles.productInfoHeader__storage}>
+            <h3 className={styles.productInfoHeader__storage__title}>
               Storage ¿hOW MUCH SPACE DO YOU NEED?
             </h3>
-            <div className='storage-options__container'>
+            <div className={styles.storageOptions__container}>
               {product.storageOptions.map((storage) => (
                 <button
                   key={storage.getCapacity()}
-                  className={`storage-option ${
+                  className={`${styles.storageOption} ${
                     selectedStorage?.getCapacity() === storage.getCapacity()
-                      ? 'selected'
+                      ? styles.selected
                       : ''
                   }`}
                   onClick={() => handleSelectStorage(storage.getCapacity())}
@@ -84,17 +84,17 @@ export const ProductInfoHeader = ({ product }: { product: Product }) => {
             </div>
           </div>
 
-          <div className='product-info-header__colors'>
-            <h3 className='product-info-header__colors-title'>
+          <div className={styles.productInfoHeader__colors}>
+            <h3 className={styles.productInfoHeader__colors__title}>
               color. pick your favourite.
             </h3>
-            <div className='color-options__container'>
+            <div className={styles.colorOptions__container}>
               {product.colorOptions.map((color) => (
                 <button
                   key={color.getHexCode()}
-                  className={`color-option ${
+                  className={`${styles.colorOption} ${
                     selectedColor?.getHexCode() === color.getHexCode()
-                      ? 'selected'
+                      ? styles.selected
                       : ''
                   }`}
                   style={{ backgroundColor: color.getHexCode() }}
