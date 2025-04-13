@@ -9,7 +9,7 @@ export const ProductCardCart = ({
 }) => {
   const { removeItemFromCart } = useCart()
   return (
-    <div className={styles.productCardCart} key={product.id}>
+    <article className={styles.productCardCart} key={product.id} role='article'>
       <img
         src={ensureHttps(product.colorOptions[0].getImageUrl())}
         alt={product.name}
@@ -38,6 +38,6 @@ export const ProductCardCart = ({
           Remove ({product.quantity})
         </button>
       </div>
-    </div>
+    </article>
   )
 }
