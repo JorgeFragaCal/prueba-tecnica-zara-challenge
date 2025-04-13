@@ -1,4 +1,7 @@
-![image]()
+- ![image](https://github.com/JorgeFragaCal/prueba-tecnica-zara-challenge/assets/miniatura)
+
+# DESPLEGADO 
+[Prueba Técnica Zara Challenge](https://prueba-tecnica-zara-challenge.vercel.app/)
 
 ## INTRODUCCIÓN
 El objetivo de esta prueba es la creación de una aplicación web enfocada en la visualización,
