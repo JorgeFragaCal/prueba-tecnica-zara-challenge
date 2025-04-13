@@ -20,7 +20,6 @@ export const SearchBar = ({
           type='text'
           value={value}
           autoFocus
-          role='textbox'
           onChange={(e) => onChange(e.target.value)}
           aria-label='Campo de búsqueda'
           aria-describedby='search-results'
