@@ -1,13 +1,6 @@
 export const Logo = () => {
   return (
-    <svg
-      xmlns='http://www.w3.org/2000/svg'
-      width='77'
-      height='30'
-      viewBox='0 0 77 30'
-      fill='none'
-      aria-label='Logo'
-    >
+    <symbol id='logo-icon' viewBox='0 0 77 30' fill='none' aria-label='Logo'>
       <path
         fillRule='evenodd'
         clipRule='evenodd'
@@ -36,6 +29,6 @@ export const Logo = () => {
           fill='black'
         />
       </g>
-    </svg>
+    </symbol>
   )
 }

@@ -4,8 +4,10 @@ import { getSmartphoneById } from '@/application/usecases'
 import { Product } from '@/domain/models/interfaces'
 import { SmartphoneCard } from '@/ui/components'
 import { deleteDuplicate } from '@/utils/deleteDuplicate'
-import { ProductInfoHeader, Specifications, Slider } from './components'
 import { useState, useEffect } from 'react'
+import { ProductInfoHeader } from './layout/product_info_header/ProductInfoHeader'
+import { Specifications } from './layout/specifications/Specifications'
+import { Slider } from './components/slider/Slider'
 
 export const ProductDetailPage = ({ id }: { id: string }) => {
   const [previousProduct, setPreviousProduct] = useState<Product | null>(null)

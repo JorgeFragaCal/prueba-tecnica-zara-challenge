@@ -1,0 +1,19 @@
+interface IconProps {
+  name: 'logo' | 'bag' | 'bag-active' | 'close'
+  className?: string
+  width?: number
+  height?: number
+}
+
+export const Icon = ({
+  name,
+  className,
+  width = 24,
+  height = 24,
+}: IconProps) => {
+  return (
+    <svg height={height} width={width} className={className}>
+      <use href={`#${name}-icon`} />
+    </svg>
+  )
+}

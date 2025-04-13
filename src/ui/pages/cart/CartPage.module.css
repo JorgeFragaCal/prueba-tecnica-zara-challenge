@@ -1,0 +1,20 @@
+.cartContainer {
+  row-gap: 3rem;
+  border-top: 1px solid var(--color-border, #000);
+  padding-top: 3rem;
+  margin-top: clamp(-2rem, -1.559vw - 0.596rem, -1rem);
+  animation: fadeIn 0.3s ease-in-out;
+  .cartTitle {
+    font-size: clamp(1.25rem, 0.317vw + 1.159rem, 1.5rem);
+    text-transform: uppercase;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
