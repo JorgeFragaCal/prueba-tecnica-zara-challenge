@@ -2,10 +2,11 @@ import { ProductListPage, ProductDetailPage, CartPage } from '@/ui/pages'
 import { Switch, Route } from 'wouter'
 import { Header } from '@/ui/components'
 import { CartProvider } from './context/CartContext'
-
+import { IconSprite } from '@/ui/icons/IconSprite'
 function App() {
   return (
     <CartProvider>
+      <IconSprite />
       <Header />
       <Switch>
         <Route path='/' component={ProductListPage} />

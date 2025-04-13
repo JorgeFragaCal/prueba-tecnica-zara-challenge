@@ -1,4 +1,4 @@
-import { Bag } from '@/ui/icons'
+import { Icon } from '@/ui/icons/Icon'
 import styles from './CartButton.module.css'
 import { useCart } from '@/context/CartContext'
 import { Link } from 'wouter'
@@ -14,7 +14,11 @@ export const CartButton = () => {
       className={styles.cartButtonContainer}
       aria-label='Ir al carrito de compras'
     >
-      <Bag active={numberOfItems > 0} />
+      {numberOfItems > 0 ? (
+        <Icon name='bag-active' width={13} height={16} />
+      ) : (
+        <Icon name='bag' width={13} height={16} />
+      )}
       <span>{numberOfItems}</span>
     </Link>
   )

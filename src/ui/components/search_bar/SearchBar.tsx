@@ -1,5 +1,5 @@
+import { Icon } from '@/ui/icons/Icon'
 import styles from './SearchBar.module.css'
-import { Close } from '@/ui/icons'
 export const SearchBar = ({
   placeholder = 'Search for a smartphone...',
   results = 20,
@@ -38,11 +38,20 @@ export const SearchBar = ({
             aria-label='Limpiar búsqueda'
             className={styles.searchBar__closeButton}
           >
-            <Close className={styles.searchBar__close} />
+            <Icon
+              className={styles.searchBar__close}
+              name='close'
+              width={8}
+              height={9}
+            />
           </button>
         )}
       </label>
-      <span className={styles.searchBar__results} aria-live='polite'>
+      <span
+        id='searchResults'
+        className={styles.searchBar__results}
+        aria-live='polite'
+      >
         {results} Results
       </span>
     </div>

@@ -25,7 +25,7 @@
     }
     button {
       width: fit-content;
-      color: #df0000;
+      color: var(--color-danger, #df0000);
     }
   }
 }
