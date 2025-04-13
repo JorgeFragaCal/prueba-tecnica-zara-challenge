@@ -12,7 +12,12 @@ export const Icon = ({
   height = 24,
 }: IconProps) => {
   return (
-    <svg height={height} width={width} className={className}>
+    <svg
+      aria-label={name}
+      height={height}
+      width={width}
+      className={className}
+    >
       <use href={`#${name}-icon`} />
     </svg>
   )

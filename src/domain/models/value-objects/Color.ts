@@ -14,7 +14,7 @@ export class Color {
   }
 
   private isValidHexCode(hex: string): boolean {
-    return /^#[0-9A-F]{6}$/i.test(hex)
+    return /^#[0-9A-F]{6}$/i.test(hex) || /^#[0-9A-F]{3}$/i.test(hex)
   }
 
   getName(): string {

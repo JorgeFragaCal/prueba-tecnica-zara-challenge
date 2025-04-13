@@ -21,7 +21,7 @@ export const SearchBar = ({
           value={value}
           autoFocus
           onChange={(e) => onChange(e.target.value)}
-          aria-label='Campo de búsqueda'
+          aria-label='search-input'
           aria-describedby='search-results'
           list='search-suggestions'
         />

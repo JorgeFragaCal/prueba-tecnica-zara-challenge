@@ -15,7 +15,7 @@ describe('SearchBar', () => {
 
   it('should render input', () => {
     render(<SearchBar />)
-    expect(screen.getByRole('textbox')).toBeInTheDocument()
+    expect(screen.getByLabelText('Campo de búsqueda')).toBeInTheDocument()
   })
 
   it('should render correct number of results', () => {
@@ -24,7 +24,7 @@ describe('SearchBar', () => {
   })
   it('should have value', () => {
     render(<SearchBar value='test' />)
-    expect(screen.getByRole('textbox')).toHaveValue('test')
+    expect(screen.getByLabelText('search-input')).toHaveValue('test')
   })
 
   it('should show clear button if value is present', () => {
@@ -37,6 +37,6 @@ describe('SearchBar', () => {
     const button = screen.getByRole('button')
     fireEvent.click(button)
     rerender(<SearchBar value='' />)
-    expect(screen.getByRole('textbox')).toHaveValue('')
+    expect(screen.getByLabelText('search-input')).toHaveValue('')
   })
 })

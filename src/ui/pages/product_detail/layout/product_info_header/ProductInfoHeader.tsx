@@ -58,7 +58,7 @@ export const ProductInfoHeader = ({ product }: { product: Product }) => {
               {product.name}
             </h1>
             <p className={styles.productInfoHeader__info__price}>
-              Form{' '}
+              From{' '}
               {selectedStorage?.getPrice().toString() ??
                 product.storageOptions[0].getPrice().toString()}
             </p>
@@ -92,6 +92,8 @@ export const ProductInfoHeader = ({ product }: { product: Product }) => {
             <div className={styles.colorOptions__container}>
               {product.colorOptions.map((color) => (
                 <button
+                  role='button'
+                  aria-label={color.getName()}
                   key={color.getHexCode()}
                   className={`${styles.colorOption} ${
                     selectedColor?.getHexCode() === color.getHexCode()
@@ -107,6 +109,7 @@ export const ProductInfoHeader = ({ product }: { product: Product }) => {
           </div>
 
           <Button
+            ariaLabel='Add to cart'
             disabled={!selectedStorage || !selectedColor}
             onClick={() =>
               addItemToCart({
