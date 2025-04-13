@@ -1,6 +1,7 @@
 import { ProductBase } from '@/domain/models/interfaces'
 import styles from './SmartphoneCard.module.css'
 import { Link } from 'wouter'
+import { ensureHttps } from '@/utils/url'
 export const SmartphoneCard = ({
   product,
   url = `/product/${product.id}`,
@@ -17,7 +18,7 @@ export const SmartphoneCard = ({
       >
         <img
           className={styles.cardProduct__image}
-          src={product.imageUrl}
+          src={ensureHttps(product.imageUrl)}
           alt={`${product.brand} ${product.name}`}
           width={330}
           height={260}

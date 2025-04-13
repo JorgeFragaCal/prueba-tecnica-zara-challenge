@@ -4,7 +4,7 @@ import { Button } from '@/ui/components/button/Button'
 import { useProductSelection } from './hooks/useProductSelection'
 import { useCart } from '@/context/CartContext'
 import { Link } from 'wouter'
-
+import { ensureHttps } from '@/utils/url'
 export const ProductInfoHeader = ({ product }: { product: Product }) => {
   const {
     selectedStorage,
@@ -39,10 +39,10 @@ export const ProductInfoHeader = ({ product }: { product: Product }) => {
       <section className={styles.productInfoHeader__container}>
         <div className={styles.productInfoHeader__image}>
           <img
-            src={
+            src={ensureHttps(
               selectedColor?.getImageUrl() ??
-              product.colorOptions[0].getImageUrl()
-            }
+                product.colorOptions[0].getImageUrl(),
+            )}
             alt={product.name}
             width={510}
             height={630}
@@ -64,9 +64,9 @@ export const ProductInfoHeader = ({ product }: { product: Product }) => {
           </div>
 
           <div className={styles.productInfoHeader__storage}>
-            <h3 className={styles.productInfoHeader__storage__title}>
+            <h2 className={styles.productInfoHeader__storage__title}>
               Storage ¿hOW MUCH SPACE DO YOU NEED?
-            </h3>
+            </h2>
             <div className={styles.storageOptions__container}>
               {product.storageOptions.map((storage) => (
                 <button
@@ -85,9 +85,9 @@ export const ProductInfoHeader = ({ product }: { product: Product }) => {
           </div>
 
           <div className={styles.productInfoHeader__colors}>
-            <h3 className={styles.productInfoHeader__colors__title}>
+            <h2 className={styles.productInfoHeader__colors__title}>
               color. pick your favourite.
-            </h3>
+            </h2>
             <div className={styles.colorOptions__container}>
               {product.colorOptions.map((color) => (
                 <button
