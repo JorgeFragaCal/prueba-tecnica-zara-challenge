@@ -12,21 +12,21 @@
   gap: clamp(0.75rem, 5.397vw + -0.802rem, 5rem);
 
   .footerCart__link {
-    --background-color: var(--color-primary);
-    --color: var(--color-white);
+    --background-color: var(--color-primary, #000);
+    --color: var(--color-white, #fff);
     font-size: 12px;
     line-height: 16px;
     letter-spacing: 8%;
     text-align: center;
     text-transform: uppercase;
-    border: var(--size-border) solid var(--color-primary);
+    border: var(--size-border, 1px) solid var(--color-primary);
     padding: 1rem;
     color: var(--color);
     background-color: var(--background-color);
   }
   .footerCart__link_secondary {
     --background-color: transparent;
-    --color: var(--color-primary);
+    --color: var(--color-primary, #000);
   }
   .footerCart__total {
     text-align: right;
