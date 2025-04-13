@@ -24,6 +24,7 @@ export const SmartphoneCard = ({
           height={260}
           loading='lazy'
           decoding='async'
+          sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
         />
         <div className={styles.cardProduct__info}>
           <span className={styles.cardProduct__info__brand}>

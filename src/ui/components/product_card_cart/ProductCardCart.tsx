@@ -15,6 +15,10 @@ export const ProductCardCart = ({
         alt={product.name}
         width={100}
         height={180}
+        loading='eager'
+        decoding='async'
+        fetchPriority='high'
+        sizes='(max-width: 768px) 50vw, 25vw'
       />
       <div className={styles.productCardCart__info}>
         <div className={styles.productCardCart__info__namePrice}>

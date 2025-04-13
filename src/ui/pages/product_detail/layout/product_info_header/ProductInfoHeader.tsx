@@ -49,6 +49,7 @@ export const ProductInfoHeader = ({ product }: { product: Product }) => {
             loading='eager'
             fetchPriority='high'
             decoding='async'
+            sizes='(max-width: 768px) 100vw, 50vw'
           />
         </div>
         <div className={styles.productInfoHeader__info}>
