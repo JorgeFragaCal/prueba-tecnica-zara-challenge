@@ -3,8 +3,9 @@ import {
   ApiProductBase,
   Product,
   ProductBase,
-} from '../../domain/models/interfaces'
-import { Color, Price, Storage } from '../../domain/models/value-objects'
+} from '@/domain/models/interfaces'
+import { Color, Price, Storage } from '@/domain/models/value-objects'
+import { ensureHttps } from '@/utils/url'
 
 export const ProductAdapter = {
   toBaseDomain: (apiProduct: ApiProductBase): ProductBase => {
@@ -13,7 +14,7 @@ export const ProductAdapter = {
       brand: apiProduct.brand,
       name: apiProduct.name,
       basePrice: Price.create(apiProduct.basePrice),
-      imageUrl: apiProduct.imageUrl,
+      imageUrl: ensureHttps(apiProduct.imageUrl),
     }
   },
 
@@ -24,7 +25,7 @@ export const ProductAdapter = {
       rating: apiProduct.rating,
       specs: apiProduct.specs,
       colorOptions: apiProduct.colorOptions.map((color) =>
-        Color.create(color.name, color.hexCode, color.imageUrl),
+        Color.create(color.name, color.hexCode, ensureHttps(color.imageUrl)),
       ),
       storageOptions: apiProduct.storageOptions.map((storage) =>
         Storage.create(storage.capacity, Price.create(storage.price)),
