@@ -1,6 +1,7 @@
 import styles from './ProductCardCart.module.css'
 import { useCart } from '@/context/CartContext'
 import { Product } from '@/domain/models/interfaces'
+import { ensureHttps } from '@/utils/url'
 export const ProductCardCart = ({
   product,
 }: {
@@ -10,7 +11,7 @@ export const ProductCardCart = ({
   return (
     <div className={styles.productCardCart} key={product.id}>
       <img
-        src={product.colorOptions[0].getImageUrl()}
+        src={ensureHttps(product.colorOptions[0].getImageUrl())}
         alt={product.name}
         width={100}
         height={180}
