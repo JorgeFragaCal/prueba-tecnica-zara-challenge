@@ -20,6 +20,7 @@ export const ProductDetailPage = ({ id }: { id: string }) => {
   useEffect(() => {
     if (product) {
       setPreviousProduct(product)
+      window.scrollTo({ top: 0, behavior: 'smooth' })
     }
   }, [product])
 
