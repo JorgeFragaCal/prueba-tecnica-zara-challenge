@@ -1,4 +1,9 @@
-- ![image](https://github.com/JorgeFragaCal/prueba-tecnica-zara-challenge/assets/miniatura)
+![image](https://github.com/JorgeFragaCal/prueba-tecnica-zara-challenge/assets/miniatura)
+
+![image](https://github.com/JorgeFragaCal/prueba-tecnica-zara-challenge/assets/performance)
+
+![image](https://github.com/JorgeFragaCal/prueba-tecnica-zara-challenge/assets/test)
+
 
 # DESPLEGADO 
 [Prueba Técnica Zara Challenge](https://prueba-tecnica-zara-challenge.vercel.app/)
@@ -21,7 +26,7 @@ Se ha seguido un patrón de diseño basado en DDD
 
 - TypeScript
 
-- React Router V6
+- Wouter
 
 - CSS Modules
 
@@ -32,28 +37,34 @@ Se ha seguido un patrón de diseño basado en DDD
 ```
 src/
 │
-├── domain/                     # Dominio puro (sin React)
-│   ├── models/                 # Entidades principales (Phone, CartItem)
-│   ├── services/               # Lógica del negocio (ej: calcular precios)
-│   └── repositories/           # Interfaces abstractas (ej: CartRepository)
-│
-├── infrastructure/             # Implementaciones reales (API, localStorage)
-│   ├── api/                    # Llamadas a la API REST
-│   └── persistence/            # Implementación concreta del carrito con localStorage
-│
 ├── application/                # Casos de uso y lógica de aplicación
 │   └── usecases/               # Operaciones principales (añadir al carrito, buscar, etc.)
 │
+│
+├── assets/                     # imagenes
+│
 ├── context/                    # Context API para carrito, etc.
 │   └── CartContext.tsx
+|
+├── domain/                     # Dominio puro (sin React)
+│   └── models/                 # Entidades principales (Phone, CartItem)
 │
+├── hooks/                      # Hooks personalizados
+|
+├── infrastructure/             # Implementaciones reales (API, localStorage)
+│   ├── api/                    # Llamadas a la API REST
+│   └── persistence/            # Implementación concreta del carrito con localStorage
+|   └── cache/                  # Cache para las peticiones a la API
+|   └── adapters/               # Normalización de datos a API a modelos
+│
+├── styles/                     # Variables CSS, estilos globales, etc
+│
+├── test/                       # configuración de test
+|
 ├── ui/                         # Parte visual
 │   ├── components/             # Componentes pequeños y reutilizables
 │   └── pages/                  # Vistas (Listado, Detalle, Carrito)
-│
-├── hooks/                      # Hooks personalizados
-│
-├── styles/                     # Variables CSS, estilos globales, etc.
+|        └── components/         # Componentes grandes específicos de cada vista
 │
 ├── utils/                      # Funciones auxiliares
 │
@@ -67,13 +78,20 @@ Es necesario tener instalado Node y añadir el archivo .env con la variable VITE
 
 Luego, todo lo que tienes que hacer es:
 
-npm install
+pnpm install
 
-npm run dev
+pnpm run dev
 
-Y abrir http://127.0.0.1:5173/ en tu navegador.
+Y abrir http://localhost:5173/ en tu navegador.
 
-## Deployment
+para validar el testing
 
-Se ha desplegado el proyecto usando Vercel, puedes acceder en [/](/)
+pnpm run test
+
+## Mejoras
+
+- Se ha añadido un debounce y un cacheado en el buscador para mejorar el rendimiento y reducir considerablemente las peticiones a la API
+- Se ha añadido una variable de cantidad para agrupar los productos que sean exactamente iguales en el carrito para reducir el tamaño de la vista y también el tamaño de almacenamiento en localStorage
+- Se han añadido mejoras de UX como una sugerencia por marcas en el buscador, transiciones entre páginas y un scroll automático al cambiar de producto.
+
 

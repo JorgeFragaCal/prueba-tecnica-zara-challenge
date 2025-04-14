@@ -24,7 +24,7 @@ describe('CartPage', () => {
 
   it('should render correct number of cart items', () => {
     vi.spyOn(CartContextModule, 'useCart').mockImplementation(() => ({
-      cartItems: [mockCartItems[0], mockCartItems[0], mockCartItems[0]],
+      cartItems: [mockCartItems[0], { ...mockCartItems[0], id: '2' }, { ...mockCartItems[0], id: '3' }],
       addItemToCart: vi.fn(),
       removeItemFromCart: vi.fn(),
       clearCart: vi.fn(),
