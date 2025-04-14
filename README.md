@@ -1,8 +1,6 @@
-![image](https://github.com/JorgeFragaCal/prueba-tecnica-zara-challenge/assets/miniatura)
+![image](https://github.com/JorgeFragaCal/prueba-tecnica-zara-challenge/blob/develop/src/assets/miniatura.png)
 
-![image](https://github.com/JorgeFragaCal/prueba-tecnica-zara-challenge/assets/performance)
-
-![image](https://github.com/JorgeFragaCal/prueba-tecnica-zara-challenge/assets/test)
+![image](https://github.com/JorgeFragaCal/prueba-tecnica-zara-challenge/blob/develop/src/assets/performace.png) ![image](https://github.com/JorgeFragaCal/prueba-tecnica-zara-challenge/blob/develop/src/assets/test.png)
 
 
 # DESPLEGADO 
