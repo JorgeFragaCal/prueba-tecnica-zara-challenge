@@ -1,0 +1,11 @@
+.button {
+  background-color: var(--color-primary, #000);
+  color: var(--color-white, #fff);
+  border: none;
+  padding: 20px;
+  transition: background-color 0.3s ease-in-out;
+  &:disabled {
+    background-color: var(--color-button-disabled, #c2bfbc);
+    color: #c2bfbc;
+  }
+}
